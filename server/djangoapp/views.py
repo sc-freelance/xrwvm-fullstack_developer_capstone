@@ -89,8 +89,12 @@ def get_dealerships(request, state="All"):
     return JsonResponse({"status":200,"dealers":dealerships})
 
 # Create a `get_dealer_reviews` view to render the reviews of a dealer
-# def get_dealer_reviews(request,dealer_id):
-# ...
+def get_dealer_reviews(request,dealer_id):
+    if response and isinstance(response, dict): 
+        review_detail['sentiment'] = response.get('sentiment', 'neutral')
+    else:
+        review_detail['sentiment'] = 'neutral'
+
 
 # Create a `get_dealer_details` view to render the dealer details
 def get_dealer_details(request, dealer_id):

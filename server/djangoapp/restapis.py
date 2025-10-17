@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-backend_url = 'https://saadchughtai-3030.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+backend_url = 'https://saadchughtai-3030.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
 sentiment_analyzer_url = 'https://sentianalyzer.21aoy1ppq6ut.us-south.codeengine.appdomain.cloud'
 
 def get_request(endpoint, **kwargs):
