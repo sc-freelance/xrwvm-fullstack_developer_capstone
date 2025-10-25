@@ -10,9 +10,10 @@ function App() {
       <Route path="/" element={<Navigate to="/dealers" />} />
       <Route path="/login" element={<LoginPanel />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/dealers" element={<Dealers/>} />
-      <Route path="/dealer/:id" element={<Dealer/>} />
+      <Route path="/dealers" element={<Dealers />} />
+      <Route path="/dealer/:id" element={<Dealer />} />
     </Routes>
   );
 }
+
 export default App;
