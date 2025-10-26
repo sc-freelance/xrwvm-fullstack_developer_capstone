@@ -30,6 +30,7 @@ jobs:
   lint-js:
     name: Lint JavaScript Files
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,29 +40,16 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Find React directory
-        id: find-react
-        run: |
-          if [ -d "frontend" ]; then
-            echo "dir=frontend" >> $GITHUB_OUTPUT
-          elif [ -d "client" ]; then
-            echo "dir=client" >> $GITHUB_OUTPUT
-          elif [ -d "react-app" ]; then
-            echo "dir=react-app" >> $GITHUB_OUTPUT
-          else
-            echo "No React directory found!"
-            exit 1
-          fi
-
       - name: Install dependencies
-        run: |
-          cd ${{ steps.find-react.outputs.dir }}
-          npm install
+        working-directory: ./server/frontend
+        run: npm install
 
       - name: Install ESLint
         run: npm install -g eslint
 
-      - name: Run ESLint
+      - name: Run ESLint on React code
+        working-directory: ./server/frontend
         run: |
-          cd ${{ steps.find-react.outputs.dir }}
+          echo "Running JavaScript linter..."
           eslint src || true
+          echo "JavaScript lint completed (ignoring warnings)"
